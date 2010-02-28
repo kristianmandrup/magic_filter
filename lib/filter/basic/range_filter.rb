@@ -1,6 +1,6 @@
 module MagicFilter
 
-  class Name < Named    
+  class Range < Base    
     attr_accessor :ranges, :return_symbol         
 
     def initialize(name, return_symbol, *ranges)
@@ -13,7 +13,6 @@ module MagicFilter
     def allow?(value)
       return return_symbol if ranges.reject{|range| !range.include?(value) }
     end
-
-  end
+  end  
     
 end

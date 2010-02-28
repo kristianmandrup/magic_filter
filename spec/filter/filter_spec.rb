@@ -46,11 +46,11 @@ it "empty filters" do
       mf.class_filter do |cf|
         cf.defaults :yield, :include        
         cf.name_filter do |nf|
-          nf << :include => [:Abc, :Def]
+          nf.includes => [:Abc, :Def]
         end
         cf.method_filter do |mf|
-          mf << :include => [:ab, :bc]
-          mf << :exclude => [:cf]
+          mf.includes => [:ab, :bc]
+          mf << excludes => [:cf]
         end
       end  
 
