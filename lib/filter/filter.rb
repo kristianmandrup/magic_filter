@@ -4,7 +4,7 @@ module MagicFilter
     include FilterFactory
   end
   
-  def self.list
+  def self.chain
     MagicFilter::Chain.new
   end
    

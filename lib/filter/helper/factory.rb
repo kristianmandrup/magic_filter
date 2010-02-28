@@ -3,12 +3,12 @@ module MagicFilter
     
     # create and add from method name
     def method_missing(name, *args)
-      if filter_name = name.to_s.gsub!(/_filter$/)
-        self << "MagicFilter::#{filter_name}".to_class.new args
+      if filter_name = name.to_s.gsub!(/_filter$/) 
+        self.respond_to?(:<<) ? add create(name, args) : create(name, args)
       else
         raise "class MagicFilter::#{name} was not found"
       end
-    end 
+    end     
     
     # concatenate to filters chain either using a hash with parameters for a single filter
     # or using a lits of reay made filters
@@ -23,10 +23,14 @@ module MagicFilter
 
   protected
 
+    def create(name, *args)
+      "MagicFilter::#{filter_name}".to_class.new args
+    end
+    
     def add(filter)
       return add_hash(filters) if filter.kind_of? Hash            
-      @filters << filter if filter.respond_to? :allow? 
-      return self
+      return self << filter if filter.respond_to? :<<
+      filter
     end
 
     # raise exception if no class found

@@ -3,4 +3,13 @@ class String
     class_name = self
     class_name.split(‘::’).inject(Kernel) {|scope, const_name| scope.const_get(const_name)}  
   end
+  
+  def lowercase
+    downcase
+  end
+
+  def uppercase
+    upcase
+  end
+
 end    

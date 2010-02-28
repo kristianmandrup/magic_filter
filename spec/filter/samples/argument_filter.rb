@@ -12,10 +12,6 @@ module MagicFilter
       msg_in_context? msg = args[0], context = args[1]
     end                
     
-    def names
-      
-    end
-
 
   protected
     def msg_in_context?(msg, context)

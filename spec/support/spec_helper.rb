@@ -4,6 +4,8 @@ require 'magic_tracer'
 require 'spec'
 require 'spec/autorun'
 
+Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f}
+
 Spec::Runner.configure do |config|
   
 end
